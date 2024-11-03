@@ -1,6 +1,7 @@
 from os.path import join
 import threading
 import time
+from os import getenv
 from flask_cors import CORS
 from dotenv import load_dotenv
 import google.generativeai as genai
@@ -10,9 +11,9 @@ from flask import Flask, Response
 
 # Load environment variables
 load_dotenv()
-
+genai_api_key = getenv('GENAI_API_KEY')
 # Configure API keys
-genai.configure(api_key='AIzaSyBA9NTF52o2J8A_hC69M7e-m5XPA8hqmZQ')
+genai.configure(api_key=genai_api_key)
 try:
     client = Client(
         user_id="2nhtx1GRk1aJVdCYRmORCBcj15n1",
